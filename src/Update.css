@@ -1,0 +1,55 @@
+
+
+input[type=text], input[type=password] {
+    width: 40%;
+    padding: 15px;
+    margin: 5px 15px  22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+.top-row > div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+}
+.first-Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+   
+    width: 30%;
+  }
+  .all-feild-container{
+      display: flex;
+      flex-direction: column;
+
+      
+  }
+  .update-container{
+      margin: 200px;
+  }
+  .update-form{
+      padding: 40px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+  .submit-button{
+      display: flex;
+      justify-content: center;
+  }
+  .required:after {
+    content:" *";
+    color: red;
+  }
+
+  
+

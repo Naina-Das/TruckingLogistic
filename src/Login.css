@@ -1,0 +1,33 @@
+.login-container{
+   
+    padding: 2%;
+    margin: 60px auto;
+    background: #fff;
+}
+.loginForm-container{
+    width: 90%;
+    margin: 30px auto;
+    padding: 60px 30px;
+    box-sizing: border-box;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .login-container{
+    background-color: red;
+    margin: 150px 395px;
+  }
+  button {
+    background-color: #c49300;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 140px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+  }
