@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("../public/firebase-messaging-sw.js")
+    .register("./firebase-messaging-sw.js")
     .then(function(registration) {
       console.log("Registration successful, scope is:", registration.scope);
     })
