@@ -3,6 +3,18 @@ import { auth } from "./firebase";
 import { generateUserDocument } from "./firebase";
 import {useHistory} from 'react-router-dom';
 import Quloi from './Assets/1.png';
+import { ToastContainer, toast } from 'react-toastify';
+
+import { checkIEmpty } from "./Utils";
+const notify = () => toast.error("All field are mandatory", {
+    position: "top-right",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
 
 const Login = () => {
     const history = useHistory();
@@ -21,14 +33,24 @@ const Login = () => {
         }))
     }
     const handleSubmit =async()=>{
-      const {user} = await auth.createUserWithEmailAndPassword(data.email, data.password);
+        if(checkIEmpty(data)) {
+            notify();
+            return;
+        }
+        try{
+            const {user} = await auth.createUserWithEmailAndPassword(data.email, data.password);
       generateUserDocument(user, {fullName: data.fullName});
       history.push("/");
-        
+        } 
+        catch(error){
+            toast.error(error.message);
+        }
+      
     }
   
     return (
         <div class ="login">
+            <ToastContainer/>
             <img src={Quloi} style={{
                 display: "block",
                 margin: "0 auto"

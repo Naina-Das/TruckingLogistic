@@ -6,7 +6,7 @@ import Quloi from './Assets/1.png';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { checkIEmpty } from "./Utils";
-const notify = () => toast("All ield are mandatory", {
+const notify = () => toast.error("All field are mandatory", {
     position: "top-right",
     autoClose: 4000,
     hideProgressBar: false,
@@ -25,10 +25,10 @@ const Update = () => {
         firstName: '',
         secondName: '',
         phone: '',
-        companyName: '',
+        company: '',
         numberPlate: ''
     }
-    const [details, setDetails] = useState({});
+    const [details, setDetails] = useState(updateFormData);
 
     const handleChange = (event) => {
         setDetails(() => ({
@@ -60,7 +60,7 @@ const Update = () => {
     }
     return (
         <div className="update-container">
-             <ToastContainer />
+             <ToastContainer/>
              <img src={Quloi} style={{
                 display: "block",
                 margin: "0 auto"
@@ -83,7 +83,7 @@ const Update = () => {
                     <input type="text" placeholder="(000)000-0000" value={details.phone} name = "phone"  onChange={handleChange} />
 
                     <label for="required" className="required" >Company</label>
-                    <input type="text" value={details.companyName} placeholder="Company name"  name = "company"  onChange={handleChange} />
+                    <input type="text" value={details.company} placeholder="Company name"  name = "company"  onChange={handleChange} />
 
 
                     <label for="required" className="required">Truck number Plate:</label>

@@ -2,6 +2,19 @@ import { useState } from 'react';
 import { auth } from "./firebase";
 import { useHistory } from 'react-router-dom';
 import Quloi from './Assets/1.png';
+import { ToastContainer, toast } from 'react-toastify';
+
+import { checkIEmpty } from "./Utils";
+const notify = () => toast.error("All field are mandatory", {
+    position: "top-right",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
+
 
 const Login = () => {
     const history = useHistory();
@@ -24,11 +37,15 @@ const Login = () => {
         }))
     }
     const handleSubmit = () => {
+        if(checkIEmpty(data)) {
+            notify();
+            return;
+        }
         auth.signInWithEmailAndPassword(data.email, data.password).then(result => {
             history.push("/truck");
         }).catch(error => {
             // setError("Error signing in with password and email!");
-            console.error("Error signing in with password and email", error);
+            toast.error("Invalid credentials");
         });
         // getUserDocument
 
@@ -36,6 +53,7 @@ const Login = () => {
 
     return (
         <div className="login">
+            <ToastContainer/>
             <img src={Quloi} style={{
                 display: "block",
                 margin: "0 auto"
