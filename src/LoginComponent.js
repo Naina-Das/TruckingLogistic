@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { auth } from "./firebase";
 import { useHistory } from 'react-router-dom';
+import Quloi from './Assets/1.png';
 
 const Login = () => {
     const history = useHistory();
     const loginFormData = {
-       
+
         email: '',
         password: ''
     }
     const [data, setData] = useState({
-       
+
         email: '',
         password: ''
     });
@@ -34,9 +35,14 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className="login">
+            <img src={Quloi} style={{
+                display: "block",
+                margin: "0 auto"
+            }}></img>
             <div className="login-container">
-                <div style={{ color: "white", marginLeft: "150px" }}>Trucking Logistics Sign In</div>
+
+                <div style={{ color: "white", display: "flex" , justifyContent: "center" }}>Trucking Logistics Sign In</div>
 
 
                 <div className="loginForm-container">

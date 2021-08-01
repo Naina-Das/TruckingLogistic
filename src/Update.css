@@ -16,6 +16,7 @@ input[type=text], input[type=password] {
 .first-Row{
     display: flex;
     flex-direction: row;
+    row-gap: 20px;
     justify-content: space-between;
 }
 
@@ -36,11 +37,14 @@ button {
       
   }
   .update-container{
-      margin: 200px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+      background-color:#f3fafe;
+      width: 600px;
+    margin: 30px auto;
   }
   .update-form{
-      padding: 40px;
-      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    padding: 0px 40px 20px 40px;
   }
   .submit-button{
       display: flex;

@@ -39,7 +39,7 @@ export const TruckList = () => {
                     Truck List
                 </div>
                 <div>
-                <button type="submit" style ={{width: "50%"}} onClick={() => {history.push('/truck')}}> Create Truck</button>
+                <button type="submit" style ={{width: "100%"}} onClick={() => {history.push('/truck')}}> Create Truck</button>
 
                 </div>
 

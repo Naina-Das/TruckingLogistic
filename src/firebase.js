@@ -59,8 +59,7 @@ export const generateTruckDocument = async (data) => {
 
   const truckRef = firestore.doc(`trucks/${Math.random()}`);
     try {
-      console.log('ddddddd', data);
-      await truckRef.set({...data});
+      await truckRef.set(data);
     } catch (error) {
       console.error("Error creating user document", error);
     }
