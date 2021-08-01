@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { generateTruckDocument, getToken, onMessageListener, getTruckDocuments } from "./firebase";
+import './Update.css';
+import {useHistory} from 'react-router-dom'
+
 
 const Update = () => {
+    const history = useHistory();
+    const [token, setTokenFound] = useState('');
+    getToken(setTokenFound);
+    
     const updateFormData = {
         firstName: '',
         secondName: '',
         phone: '',
-        companyname: '',
+        companyName: '',
         numberPlate: ''
     }
     const [details, setDetails] = useState({ updateFormData });
@@ -16,18 +24,26 @@ const Update = () => {
             [event.target.name]: event.target.value
         }))
     }
-     const handleSubmit =()=>{
-        alert(`
-        FirstName: ${details.firstName},
-        SecondName: ${details.secondName},
-        PhoneName: ${details.phone},
-        CompanyName: ${details.companyname},
-        NumberPlate: ${details.numberPlate}`);
-       
+     const handleSubmit =async ()=>{
+         console.log("Identifier",{...details});
+        await generateTruckDocument({...details})
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'key=AAAAlwnSNk8:APA91bHSqoSiVsv61ubYLTuAAm8sxTLsM5PRsNYUcFOwCf-uo5w-EGmk4cPTdFHlK5vkqEvrT4lWjWFWpTYL43STO71Vnyyc9XC_HJS_CMvaKOTIDzmcIhfFUQ_cY7Ye5o9QzoTB2_i0'},
+            body: JSON.stringify({
+                data: {
+                    title: 'Saved Driver and Truck Information'
+                },
+                to: token
+            })
+        }
+        const {payload} = fetch(`https://fcm.googleapis.com/fcm/send`, requestOptions);
+        history.push("/truck-list");
         
     }
     return (
         <div className="update-container">
+           
             <div className="update-form">
                 <h1>Trucking Logistics</h1>
                 <hr></hr>
@@ -44,7 +60,7 @@ const Update = () => {
                     <input type="text" placeholder="(000)000-0000" value={details.phone} name = "phone"  onChange={handleChange} />
 
                     <label for="required" className="required" >Company</label>
-                    <input type="text" value={details.companyname} name = "company"  onChange={handleChange} />
+                    <input type="text" value={details.companyName} name = "company"  onChange={handleChange} />
 
 
                     <label for="required" className="required">Truck number Plate:</label>
@@ -54,6 +70,8 @@ const Update = () => {
                 <div className="submit-button">
                     <button type="submit" onClick = {handleSubmit}>SUBMIT</button>
                 </div>
+               
+
 
 
 
