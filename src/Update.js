@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 const Update = () => {
-    const loginFormData = {
+    const updateFormData = {
         firstName: '',
         secondName: '',
         phone: '',
         companyname: '',
         numberPlate: ''
     }
-    const [details, setDetails] = useState({ loginFormData });
+    const [details, setDetails] = useState({ updateFormData });
 
     const handleChange = (event) => {
         setDetails(() => ({

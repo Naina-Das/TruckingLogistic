@@ -2,11 +2,13 @@ import { useState } from 'react';
 
 const Login = () => {
     const loginFormData = {
-        fullame: '',
+        fullName: '',
         email: '',
         password: ''
     }
-    const [data, setData] = useState(loginFormData);
+    const [data, setData] = useState({  fullName: '',
+    email: '',
+    password: ''});
 
 
     const handleChange = (event) => {
@@ -15,7 +17,12 @@ const Login = () => {
             [event.target.name]: event.target.value
         }))
     }
-
+    const handleSubmit =()=>{
+        alert(`${data.fullName} has signed in
+       `);
+       
+        
+    }
   
     return (
         <div>
@@ -24,11 +31,13 @@ const Login = () => {
 
                
                 <div className="loginForm-container">
-                    <input type="text" value={data.fullame} name="fullname" onChange={handleChange} placeholder="Enter Full Name"></input>
+                <input type="text" value={data.firstName} name = "fullName" onChange={handleChange} placeholder ="Enter you full name" />
                     <input type="text" value={data.email} name="email" onChange={handleChange} placeholder="Enter Email Address"></input>
                     <input type="password" value={data.password} name="password" onChange={handleChange} placeholder="Enter Password"></input>
                 </div>
-                <button type = "submit" >SEND MESSAGE</button>
+                <button type="submit" onClick = {handleSubmit}>SIGN IN</button>
+
+                
            
             </div>
         </div>
